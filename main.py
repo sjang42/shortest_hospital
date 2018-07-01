@@ -23,3 +23,20 @@ def excel_to_dict(excel_path, headers=[]):
 
     return dict_list
 
+
+def find_shortest_straight(location_standard, locations_hospital, num_find=3):
+    # 우선순위 (거리, index) 넣고 맨 위에 n개 빼서 리턴
+    heap = []
+    total = len(locations_hospital)
+    for i, hospital in enumerate(locations_hospital):
+        distance = haversine((location_standard['Y'], location_standard['X']),
+                             (hospital['Y'], hospital['X']))
+        hospital['straight_distance'] = distance
+        heapq.heappush(heap, (distance, i))
+
+        # if (i + 1) % 100 == 0 or i + 1 == total:
+        #     print('find shortest [{}/{}]'.format(i + 1, total))
+
+    shortest = [heapq.heappop(heap)[1] for i in range(num_find)]
+    return shortest
+
