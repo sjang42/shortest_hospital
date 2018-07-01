@@ -2,3 +2,4 @@ resources/
 .idea/
 test.py
 .DS_Store
+*.xlsx
