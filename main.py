@@ -67,8 +67,8 @@ if __name__ == '__main__':
             office['htype' + str(num + 1)] = hospitals[shortest[num]]['htype']
             office['Y_hosp' + str(num + 1)] = hospitals[shortest[num]]['Y']
             office['X_hosp' + str(num + 1)] = hospitals[shortest[num]]['X']
-            office['dist_straight'
-                   + str(num)] = hospitals[shortest[num]]['straight_distance']
+            office['dist_straight' + str(num + 1)] = hospitals[shortest[num]][
+                'straight_distance']
 
         if i == 0:
             ws.append(list(office.keys()))
