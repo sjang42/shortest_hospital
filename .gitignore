@@ -1,5 +1,9 @@
 resources/
 .idea/
-test.py
 .DS_Store
+
+test.py
+find_None.py
+
 *.xlsx
+*.txt
