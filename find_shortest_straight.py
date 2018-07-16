@@ -18,7 +18,7 @@ def excel_to_dict(excel_path, headers=[]):
             one_dict = dict(zip(headers, row_values))
             dict_list.append(one_dict)
 
-        if (i + 1) % 100 == 0 or i + 1 == total:
+        if (i + 1) % 500 == 0 or i + 1 == total:
             print('excel to dict: [{}/{}]'.format(i + 1, total))
 
     return dict_list
@@ -52,7 +52,12 @@ if __name__ == '__main__':
     path_to_offices = './resources/location_offices.xlsx'
     path_to_hospitals = './resources/hira_all_addr_w_coord.xlsx'
 
-    all_hospitals = ['hira_subcategory_가정의학과.xlsx']
+    all_hospitals = [
+        'hira_subcategory_가정의학과.xlsx', 'hira_subcategory_권역외상센터.xlsx',
+        'hira_subcategory_내과.xlsx', 'hira_subcategory_신경과.xlsx',
+        'hira_subcategory_응급의료병원.xlsx', 'hira_subcategory_일반의.xlsx',
+        'hira_subcategory_정형외과.xlsx', 'hira_subcategory_종합병원.xlsx'
+    ]
     dirname = './resources/'
     num_find = 3
 
@@ -89,7 +94,7 @@ if __name__ == '__main__':
             if i == 0:
                 ws.append(list(office.keys()))
 
-            if (i + 1) % 20 == 0 or i + 1 == len_offices:
+            if (i + 1) % 500 == 0 or i + 1 == len_offices:
                 print('find offices [{}/{}]'.format(i + 1, len_offices))
                 wb.save(out_name)
 
