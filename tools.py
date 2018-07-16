@@ -48,3 +48,20 @@ def tuple2str(tp):
         ret += str(item)
 
     return ret
+
+
+def list2str(iterable):
+    ret = ''
+
+    for i, item in enumerate(iterable):
+        if i != 0:
+            ret += ','
+        ret += str(item)
+
+    return ret
+
+
+def float_trim(origin, limit=4):
+    ret = ("{0:." + str(limit) + "f}").format(origin)
+
+    return float(ret)
