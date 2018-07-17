@@ -5,18 +5,20 @@ import json
 from tools import tuple2str, float_trim, list2str
 
 
-def result2dict(direction_result):
+def result2dict(direction_result, num_hosp):
+    num_hosp = str(num_hosp)
+
     ret = dict()
-    ret['status'] = direction_result['status']
+    ret['status' + num_hosp] = direction_result['status']
 
     if direction_result['status'] != 'OK':
-        ret['total_distacne'] = -1
-        ret['total_duration'] = -1
-        ret['end_locations'] = 'None'
-        ret['travel_modes'] = 'None'
-        ret['distances'] = 'None'
-        ret['durations'] = 'None'
-        ret['responce'] = json.dumps(direction_result)
+        ret['total_distance' + num_hosp] = -1
+        ret['total_duration' + num_hosp] = -1
+        ret['end_locations' + num_hosp] = 'None'
+        ret['travel_modes' + num_hosp] = 'None'
+        ret['distances' + num_hosp] = 'None'
+        ret['durations' + num_hosp] = 'None'
+        ret['response' + num_hosp] = json.dumps(direction_result)
 
         return ret
 
@@ -46,13 +48,13 @@ def result2dict(direction_result):
         end_locations.append(end_location)
         travel_modes.append(travel_mode)
 
-    ret['total_distacne'] = total_distance
-    ret['total_duration'] = total_duration
-    ret['end_locations'] = list2str(end_locations)
-    ret['travel_modes'] = list2str(travel_modes)
-    ret['distances'] = list2str(distances)
-    ret['durations'] = list2str(durations)
-    ret['responce'] = json.dumps(direction_result)
+    ret['total_distance' + num_hosp] = total_distance
+    ret['total_duration' + num_hosp] = total_duration
+    ret['end_locations' + num_hosp] = list2str(end_locations)
+    ret['travel_modes' + num_hosp] = list2str(travel_modes)
+    ret['distances' + num_hosp] = list2str(distances)
+    ret['durations' + num_hosp] = list2str(durations)
+    ret['response' + num_hosp] = json.dumps(direction_result)
 
     return ret
 
@@ -72,7 +74,7 @@ class GmapDirection:
 
         self.key = key
         self.key = os.environ.get('SJANG_GOOGLEAPI')
-
+        
         self.default_param = {
             'key': self.key,
             'region': self.region,
@@ -90,3 +92,7 @@ class GmapDirection:
         json_dict = response.json()
 
         return json_dict
+
+    def set_key(self, new_key):
+        self.key = new_key
+

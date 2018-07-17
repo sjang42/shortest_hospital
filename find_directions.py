@@ -11,6 +11,7 @@ in_dirname = './straight/'
 straight = os.listdir(in_dirname)
 
 num_find = 3
+# todo : key 제한 걸고 loop 돌기
 
 for f in straight:
     if not is_excel(f):
@@ -29,12 +30,13 @@ for f in straight:
         for num in range(num_find):
             destination = (office['Y_hosp' + str(num + 1)], office['X_hosp' + str(num + 1)])
             direction_result = gmap.get_direction(origin, destination)
-            a = result2dict(direction_result)
-            print(a)
+            direction_dict = result2dict(direction_result, num + 1)
+            print(direction_dict)
         if i == 1:
             break
 
     # todo: 저장 전 순서 바꿔주기
+    # todo: 저장하기
 
     break
 
