@@ -6,11 +6,11 @@ import os
 url = 'https://maps.googleapis.com/maps/api/directions/json'  # url to request a directions
 
 departure_time = datetime.strptime(
-    "2018-09-03 06:00", "%Y-%m-%d %H:%M").timestamp()  # 2018-07-09 08:00
+    "2018-09-03 06:00", "%Y-%m-%d %H:%M").timestamp()  # 2018-09-03 06:00
 departure_time = int(departure_time)
 
-origin = '37.14979,129.20528'  # 가곡면사무소
-destination = '37.1743125915527, 129.335433959961'  # 호산의원
+origin = '37.17638,129.33568'  # 원덕읍사무소
+destination = '36.99252319,129.4098816'  # 울진군의료원
 
 mode = 'transit'  # available : trainsit(대중교통), walking, bicycling, driving(default)
 
